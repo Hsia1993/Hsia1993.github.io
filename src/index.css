@@ -1,0 +1,66 @@
+:root {
+  font-family: "Menlo", "Monaco", "Courier New", monospace;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: dark;
+  color: #33ff00;
+  background-color: #1a1a1a;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1rem;
+}
+
+a {
+  font-weight: 500;
+  color: #33ff00;
+  text-decoration: underline;
+}
+a:hover {
+  color: #66ff33;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.command-input {
+  background: transparent;
+  border: none;
+  color: #33ff00;
+  font-family: "Menlo", "Monaco", "Courier New", monospace;
+  font-size: 1em;
+  width: 100%;
+  /* padding: 5px; */
+}
+
+.command-input:focus {
+  outline: none;
+}
+
+/* Command prompt styling */
+.prompt {
+  color: #33ff00;
+  margin-right: 8px;
+}
+
+/* Command output styling */
+.output {
+  color: #cccccc;
+  margin: 5px 0;
+  white-space: pre-wrap;
+}
+
+/* Remove light mode */
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #33ff00;
+    background-color: #1a1a1a;
+  }
+  a:hover {
+    color: #66ff33;
+  }
+}
