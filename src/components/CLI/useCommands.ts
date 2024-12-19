@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import CommandUtils from "./commandUtils";
-import { Action } from "../types";
+import { Action } from "../../types";
 
 export const useCommands = () => {
   const [commandHistory, setCommandHistory] = useState<string[]>([]);

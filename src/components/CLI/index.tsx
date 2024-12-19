@@ -1,5 +1,4 @@
-import { useState, KeyboardEvent, useEffect, useRef } from "react";
-import "../App.css";
+import { KeyboardEvent, useEffect, useRef } from "react";
 import { useCommands } from "./useCommands";
 const intro = `
 
@@ -13,7 +12,7 @@ const intro = `
 Welcome to my website\nplease type help for more information!
 `;
 function App() {
-  const [hostname, setHostname] = useState("");
+  // const [hostname, setHostname] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalContentRef = useRef<HTMLDivElement>(null);
   const {
@@ -26,10 +25,10 @@ function App() {
     setCurrentCommand,
   } = useCommands();
 
-  useEffect(() => {
-    const domain = window.location.hostname;
-    setHostname(domain === "localhost" ? domain : domain.replace(/^www\./, ""));
-  }, []);
+  // useEffect(() => {
+  //   const domain = window.location.hostname;
+  //   setHostname(domain === "localhost" ? domain : domain.replace(/^www\./, ""));
+  // }, []);
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -76,48 +75,38 @@ function App() {
       onAutocomplete(input);
     }
   };
-
   return (
-    <div className="terminal">
-      <div className="terminal-header">
-        <div className="terminal-buttons">
-          <span className="terminal-button close"></span>
-          <span className="terminal-button minimize"></span>
-          <span className="terminal-button maximize"></span>
-        </div>
-        <div className="terminal-title">guest@{hostname} ~ </div>
-      </div>
-
-      <div ref={terminalContentRef} className="terminal-content">
-        {intro
-          .trim()
-          .split("\n")
-          .map((line) => (
-            <pre className="output output__intro">{line}</pre>
-          ))}
-        {commandHistory.map((line, index) => (
-          <pre
-            key={index}
-            className={line.startsWith("$") ? "command-line" : "output"}
-            style={{ userSelect: "text" }}
-          >
+    <div ref={terminalContentRef} className="terminal-content">
+      {intro
+        .trim()
+        .split("\n")
+        .map((line) => (
+          <pre className="output output__intro" key={line}>
             {line}
           </pre>
         ))}
+      {commandHistory.map((line, index) => (
+        <pre
+          key={index}
+          className={line.startsWith("$") ? "command-line" : "output"}
+          style={{ userSelect: "text" }}
+        >
+          {line}
+        </pre>
+      ))}
 
-        <div className="command-line">
-          <span className="prompt">$</span>
-          <input
-            ref={inputRef}
-            type="text"
-            value={currentCommand}
-            onChange={(e) => setCurrentCommand(e.target.value)}
-            onKeyPress={handleKeyPress}
-            onKeyDown={handleKeyDown}
-            className="command-input"
-            autoFocus
-          />
-        </div>
+      <div className="command-line">
+        <span className="prompt">$</span>
+        <input
+          ref={inputRef}
+          type="text"
+          value={currentCommand}
+          onChange={(e) => setCurrentCommand(e.target.value)}
+          onKeyPress={handleKeyPress}
+          onKeyDown={handleKeyDown}
+          className="command-input"
+          autoFocus
+        />
       </div>
     </div>
   );

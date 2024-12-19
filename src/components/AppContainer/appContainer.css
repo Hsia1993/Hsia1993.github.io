@@ -1,0 +1,61 @@
+.appContainer {
+  width: 600px;
+  height: 500px;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.appContainer.minimized {
+  transform: scale(0.1) translateY(1000px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.appContainer-button {
+  cursor: pointer;
+}
+
+.appContainer-header {
+  background-color: #2d2d2d;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.appContainer-buttons {
+  display: flex;
+  gap: 8px;
+  margin-right: 16px;
+  position: absolute;
+  left: 8px;
+}
+
+.appContainer-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.close {
+  background-color: #ff5f56;
+}
+
+.minimize {
+  background-color: #ffbd2e;
+}
+
+.maximize {
+  background-color: #27c93f;
+}
+
+.appContainer-title {
+  color: #999;
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+}
